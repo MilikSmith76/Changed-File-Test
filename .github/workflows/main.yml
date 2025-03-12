@@ -9,7 +9,7 @@ on:
 
 jobs:
   determine-changes:
-    runs-on: unbuntu-latest
+    runs-on: ubuntu-latest
     name: Determine changes files
     steps:
       - name: Checkout REPO
