@@ -1,0 +1,29 @@
+name: Main Workflow
+
+on:
+  push:
+    branches:
+      - "main"
+    paths:
+      - "test-files/**"
+
+jobs:
+  determine-changes:
+    runs-on: unbuntu-latest
+    name: Determine changes files
+    steps:
+      - name: Checkout REPO
+        uses: actions/checkout@4
+        with:
+          fetch-depth: 1
+          sparse-checkout: test-files
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v41
+        with:
+          files: test-files/**
+          separator: ', '
+      - name: Print changed files
+        env:
+          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+        run: echo $ALL_CHANGED_FILES
