@@ -13,7 +13,7 @@ jobs:
     name: Determine changes files
     steps:
       - name: Checkout REPO
-        uses: actions/checkout@4
+        uses: actions/checkout@v4
         with:
           fetch-depth: 1
           sparse-checkout: test-files
